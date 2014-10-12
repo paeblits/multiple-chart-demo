@@ -1,6 +1,6 @@
 google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
+      google.setOnLoadCallback(drawLineChart);
+      function drawLineChart() {
         var data = google.visualization.arrayToDataTable([
           ['Year', 'Sales', 'Expenses'],
           ['2004',  1000,      400],
@@ -16,4 +16,23 @@ google.load("visualization", "1", {packages:["corechart"]});
         var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
 
         chart.draw(data, options);
+
+
+          var value1, value2, random, add = 0;
+          var time;
+
+          setInterval(function() {
+              var d = new Date();
+              time = (d.getMilliseconds() * 10).toString();
+              rows = data.getNumberOfRows();
+              //data.removeRow(rows);
+              random = Math.round(100 * Math.random());
+              value1 = parseInt(data.getFormattedValue(rows-1,1));
+              value2 = parseInt(data.getFormattedValue(rows-1,2));
+              value1 = add ? value1 + random : value1 - random;
+              value2 = !add ? value2 + random : value2 - random;
+              data.addRow([time, value1, value2]);
+              chart.draw(data, options);
+              add = !add;
+          }, 400);
       }

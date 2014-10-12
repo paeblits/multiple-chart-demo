@@ -1,6 +1,6 @@
 google.load("visualization", "1", {packages:["gauge"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
+      google.setOnLoadCallback(drawGaugeChart);
+      function drawGaugeChart() {
 
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
@@ -20,16 +20,19 @@ google.load("visualization", "1", {packages:["gauge"]});
 
         chart.draw(data, options);
 
-        setInterval(function() {
+          // adds data to the first gauge, note the first param in setValue is 0
+          setInterval(function() {
           data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
           chart.draw(data, options);
-        }, 13000);
-        setInterval(function() {
+        }, 400);
+          // adds data to the second gauge
+          setInterval(function() {
           data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
           chart.draw(data, options);
-        }, 5000);
-        setInterval(function() {
+        }, 400);
+          // adds data to the third gauge
+          setInterval(function() {
           data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
           chart.draw(data, options);
-        }, 26000);
+        }, 400);
       }
