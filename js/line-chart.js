@@ -1,3 +1,4 @@
+var interval = 500;
 google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawLineChart);
       function drawLineChart() {
@@ -34,5 +35,19 @@ google.load("visualization", "1", {packages:["corechart"]});
               data.addRow([time, value1, value2]);
               chart.draw(data, options);
               add = !add;
-          }, 400);
+          }, interval);
+
       }
+
+var increaseSpeed = function() {
+    if(interval > 0) {
+        interval -= 100;
+        console.log(interval);
+    }
+}
+
+var decreaseSpeed = function() {
+    interval += 100;
+    console.log(interval);
+}
+

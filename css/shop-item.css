@@ -34,3 +34,18 @@ footer {
 .box {
 	border: 1px solid #ccc;
 }
+
+.plus-minus {
+    display: inline-block;
+    font-size: 120%;
+    margin-left: 5px;
+}
+
+.rate {
+    margin-left: 10px;
+}
+
+.controls {
+    display: table;
+    margin: 10px auto;
+}
