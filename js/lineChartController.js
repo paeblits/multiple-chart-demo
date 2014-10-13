@@ -19,7 +19,6 @@ function LineChartController($scope, $http, $window) {
 
         chart.draw(data, options);
 
-
         var value1, value2, random, add = 0;
         var time;
 
